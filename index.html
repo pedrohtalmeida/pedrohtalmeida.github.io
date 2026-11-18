@@ -144,7 +144,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border-top: 4px solid var(--primary-color);
-            scroll-margin-top: 90px; /* Garante que o título não fica tapado pelo menu fixo */
+            scroll-margin-top: 90px;
         }
 
         /* SECÇÃO SOBRE MIM COM FOTOGRAFIA */
@@ -283,6 +283,63 @@
             padding: 25px;
             color: #64748b;
             font-size: 0.9rem;
+        }
+
+        /* ADAPTAÇÃO PARA TELEMÓVEIS (ECRÃS PEQUENOS) */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 12px 10px;
+                gap: 8px;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li a {
+                font-size: 0.85rem;
+            }
+
+            .container {
+                margin-top: 115px;
+                padding: 12px;
+            }
+
+            section {
+                padding: 22px 18px;
+                scroll-margin-top: 105px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .profile-photo {
+                width: 115px;
+                height: 115px;
+            }
+
+            .profile-title h1 {
+                font-size: 1.5rem;
+                line-height: 1.25;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .about-text {
+                text-align: left;
+            }
         }
     </style>
 </head>
