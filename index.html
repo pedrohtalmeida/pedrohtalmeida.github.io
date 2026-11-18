@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Almeida - Portfólio</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            /* PALETA SÓBRIA: Cinzento-Grafite Profissional e Elegante */
+            --primary-color: #334155;      /* Grafite escuro e sóbrio para títulos e destaques */
+            --primary-light: #e2e8f0;      /* Cinzento muito suave para detalhes */
+            --header-bg: #0f172a;          /* Azul-marinho escuro muito elegante para o cabeçalho */
+            --bg-color: #f1f5f9;           /* Fundo da página cinzento claro e limpo */
+            --card-bg: #ffffff;            /* Cartões em branco puro */
+            --text-color: #334155;         /* Texto principal legível */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* MENU DE NAVEGAÇÃO SUPERIOR (Categorias Principais) */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 18px 20px;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffffff; 
+        }
+
+        /* SUBMENU FLUTUANTE LATERAL (Lado Esquerdo para Competências e Detalhes) */
+        .floating-sidebar {
+            position: fixed;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--card-bg);
+            padding: 15px 18px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-color);
+            z-index: 900;
+            width: 155px;
+        }
+
+        .floating-sidebar span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #94a3b8;
+            font-weight: 700;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        .floating-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .floating-sidebar ul li a {
+            text-decoration: none;
+            color: #64748b;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .floating-sidebar ul li a:hover {
+            color: var(--header-bg);
+            transform: translateX(4px);
+        }
+
+        /* Esconder o menu flutuante em ecrãs menores para não sobrepor ao conteúdo */
+        @media (max-width: 1320px) {
+            .floating-sidebar {
+                display: none;
+            }
+        }
+
+        /* CORPO DA PÁGINA */
+        .container {
+            max-width: 900px;
+            margin: 100px auto 40px auto;
+            padding: 20px;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 35px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            scroll-margin-top: 90px; /* Garante que o título não fica tapado pelo menu fixo */
+        }
+
+        /* SECÇÃO SOBRE MIM COM FOTOGRAFIA */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .profile-title h1 {
+            margin: 0 0 5px 0;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            text-align: justify;
+            color: #334155;
+            line-height: 1.65;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        /* LISTAS DE COMPETÊNCIAS / SAÍDAS PROFISSIONAIS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: #f8fafc;
+            padding: 18px;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(51, 65, 85, 0.12);
+            background-color: #ffffff;
+        }
+
+        .skill-card h3 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            color: #0f172a;
+        }
+
+        .skill-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* EXPERIÊNCIA PROFISSIONAL */
+        .exp-card {
+            background: #f8fafc;
+            padding: 20px;
+            margin-bottom: 18px;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(51, 65, 85, 0.1);
+        }
+
+        .exp-card h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .exp-company {
+            margin: 0 0 10px 0;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .exp-desc {
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        .exp-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.92rem;
+            color: #64748b;
+        }
+
+        .exp-list li {
+            margin-bottom: 5px;
+        }
+
+        /* LINKS E RODAPÉ */
+        a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENU SUPERIOR PRINCIPAL (Apenas as categorias principais) -->
+    <header>
+        <nav>
+            <div class="logo">Pedro Almeida</div>
+            <ul>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SUBMENU FLUTUANTE LATERAL (Restantes categorias de competências) -->
+    <aside class="floating-sidebar">
+        <span>Competências</span>
+        <ul>
+            <li><a href="#competencias">Perfil & Áreas</a></li>
+            <li><a href="#tecnologias">Tecnologias</a></li>
+            <li><a href="#idiomas">Idiomas</a></li>
+        </ul>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container">
+
+        <!-- SECÇÃO: SOBRE MIM COM FOTO -->
+        <section id="sobre">
+            <div class="profile-header">
+                <img src="foto.jpeg" alt="Foto de Pedro Almeida" class="profile-photo">
+                
+            <div class="profile-title">
+                    <h1>Pedro Henrique Tavares Almeida</h1>
+                    <div class="subtitle"><strong>Finalista da Licenciatura em Engenharia Informática Aplicada</strong><br>Escola Superior de Tecnologia e Gestão de Águeda – Universidade de Aveiro</div>
+                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: #64748b;">
+                        <strong>Localidade:</strong> Albergaria-a-Velha, Aveiro &nbsp;|&nbsp; <strong>Data de Nascimento:</strong> 14/03/2003
+                    </p>
+                </div>
+
+            </div>
+            <p class="about-text">
+                Sou uma pessoa disciplinada, focada e exigente comigo mesmo. Gosto de abraçar objetivos desafiantes e de os concretizar com rigor, procurando sempre superar os meus próprios limites a cada novo projeto e aprender continuamente com os desafios que encontro.
+            </p>
+            <p class="about-text">
+                Fora da tecnologia, a música ocupa um lugar central na minha vida. Toco vários instrumentos, integrando ativamente vários projetos como grupos corais e bandas de música. Esta vertente artística desenvolve em mim um forte espírito de equipa, sentido de responsabilidade e polivalência, competências que trago agora para o meu futuro profissional.
+            </p>
+        </section>
+
+        <!-- SECÇÃO: COMPETÊNCIAS & PERFIL PROFISSIONAL -->
+        <section id="competencias">
+            <h2>Perfil Profissional & Áreas de Foco</h2>
+            <p class="about-text" style="margin-bottom: 20px;">
+                Com base na formação multidisciplinar da ESTGA, o meu foco profissional direciona-se para a integração de sistemas, consultoria, garantia de qualidade e desenvolvimento de aplicações:
+            </p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Consultoria & Análise de Sistemas</h3>
+                    <p>Análise e desenvolvimento de sistemas de informação, atuando em suporte e integração de soluções.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Redes & Infraestruturas</h3>
+                    <p>Administração de redes de computadores e gestão de infraestruturas informáticas.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>QA & Testes de Software</h3>
+                    <p>Garantia de qualidade, testes funcionais e validação de requisitos (QA Engineer / Tester).</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Desenvolvimento Web & Software</h3>
+                    <p>Criação e manutenção de aplicações web e serviços, cobrindo vertentes de frontend e backend.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Bases de Dados & Gestão</h3>
+                    <p>Modelação de dados, estruturação e escrita de consultas SQL para suporte a aplicações.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Sistemas Distribuídos & Cloud</h3>
+                    <p>Conceitos de computação em nuvem, arquiteturas e serviços distribuídos.</p>
+                </div>
+            </div>
+        </section>
+
+       <!-- SECÇÃO: LINGUAGENS E FERRAMENTAS -->
+        <section id="tecnologias">
+            <h2>Linguagens, Ferramentas & Tecnologias</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Linguagens de Programação</h3>
+                    <p><strong>Java, PHP, C, C++, C#</strong> — Fundamentos sólidos de programação e lógica aplicados ao desenvolvimento acadêmico.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Frontend & Web</h3>
+                    <p><strong>HTML, CSS, JavaScript, React</strong> — Desenvolvimento de interfaces de utilizador e páginas web interativas.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Bases de Dados & Espaciais</h3>
+                    <p><strong>SQL, MySQL, PostgreSQL, Bases de Dados Espaciais</strong> — Modelação de dados relacionais, estruturação de consultas e tratamento de dados geográficos.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Ferramentas & Ambientes</h3>
+                    <p><strong>Git, WordPress, Ferramentas de QA/Testes</strong> — Controlo de versões, experiência em projetos web e validação funcional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÃO: FORMAÇÃO ACADÉMICA -->
+        <section id="formacao">
+            <h2>Formação Académica</h2>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Licenciatura em Engenharia Informática Aplicada (Nível 6)</h3>
+                <p style="margin: 0; color: #64748b;">
+                    <strong>ESTGA – Escola Superior de Tecnologia e Gestão de Águeda, Universidade de Aveiro</strong><br>
+                    <em>Setembro 2024 – Atual (Finalista / Estágio Curricular)</em>
+                </p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">CTESP em Informática e Comunicação Organizacional (Nível 5)</h3>
+                <p style="margin: 0; color: #64748b;">
+                    <strong>Universidade de Aveiro</strong><br>
+                    <em>Setembro 2022 – Julho 2024</em><br>
+                    Foco em Tecnologias da Informação e Comunicação (TIC) aplicadas ao contexto organizacional.
+                </p>
+            </div>
+
+            <div>
+                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Curso Técnico de Informática e Sistemas (Nível 4)</h3>
+                <p style="margin: 0; color: #64748b;">
+                    <strong>Escola Secundária Soares Basto</strong><br>
+                    <em>Setembro 2018 – Julho 2021</em>
+                </p>
+            </div>
+        </section>
+
+        <!-- SECÇÃO: EXPERIÊNCIA PROFISSIONAL -->
+        <section id="experiencia">
+            <h2>Experiência Profissional</h2>
+
+            <div class="exp-card">
+                <h3>Web Designer / Colaborador</h3>
+                <p class="exp-company"><strong>Grupo Durit</strong> — Albergaria-a-Velha | <em>Fev 2024 – Set 2024</em></p>
+                <p class="exp-desc">
+                    Estágio profissional de 5 meses seguido de colaboração <em>freelance</em> no Departamento de Comunicação.
+                </p>
+                <ul class="exp-list">
+                    <li><strong>Reestruturação Web:</strong> Redesign e atualização de websites corporativos em WordPress.</li>
+                    <li><strong>UI/UX e Prototipagem:</strong> Desenvolvimento de propostas visuais alinhadas com as necessidades de negócio.</li>
+                    <li><strong>Gestão de Projetos:</strong> Acompanhamento do ciclo de vida dos sites, do levantamento à publicação.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <h3>Estagiário / Programador de Aplicações Web</h3>
+                <p class="exp-company"><strong>Filipengine - Sistemas de Informação</strong> — Branca, Albergaria-a-Velha | <em>Fev 2021 – Jun 2021</em></p>
+                <p class="exp-desc">
+                    Estágio profissional integrado no Curso Técnico de Informática e Sistemas (Ensino Secundário).
+                </p>
+            </div>
+
+            <div class="exp-card" style="opacity: 0.85;">
+                <h3>Outras Experiências Profissionais</h3>
+                <p class="exp-desc" style="margin-bottom: 8px;">
+                    <strong>Pneus de Ocasião</strong> (Jul 2025 – Jan 2026): Assistente de oficina, atendimento ao cliente e gestão de armazém/stock.
+                </p>
+                <p class="exp-desc" style="margin: 0;">
+                    <strong>Jolyforma</strong> (Jan 2022 – Mar 2022): Assistente de produção, atendimento e apoio técnico.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECÇÃO: COMPETÊNCIAS LINGUÍSTICAS -->
+        <section id="idiomas">
+            <h2>Competências Linguísticas</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Português — Nível C2</h3>
+                    <p><strong>Língua Materna</strong> — Domínio pleno na compreensão, expressão oral e escrita (PT-PT).</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Inglês — Nível A2 / B1</h3>
+                    <p><strong>Compreensão Leitura: B1 | Oral: A2</strong> — Boa capacidade de leitura de documentação técnica. <em>(Em desenvolvimento ativo através de formação contínua)</em>.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Francês — Nível A2 / B1</h3>
+                    <p><strong>Compreensão Leitura: B1 | Oral: A2</strong> — Facilidade na leitura e interpretação de textos escritos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÃO: CONTACTO -->
+        <section id="contacto">
+            <h2>Contactos</h2>
+            <p>Estou disponível para oportunidades de <strong>estágio curricular</strong>. Pode entrar em contacto comigo através dos seguintes meios:</p>
+            <ul>
+                <li>Email: <a href="mailto:phtalmeida18@ua.pt">phtalmeida18@ua.pt</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/pht-almeida" target="_blank">Perfil no LinkedIn</a></li>
+                <li>GitHub: <a href="https://github.com" target="_blank">Perfil no GitHub</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Pedro Almeida — Portfólio Académico e Profissional</p>
+    </footer>
+
+</body>
+</html>
