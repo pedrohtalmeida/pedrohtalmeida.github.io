@@ -11,14 +11,17 @@
         }
 
         :root {
-            --primary-color: #0f172a;      /* Escuro profundo para leitura limpa e legível */
-            --accent-color: #06b6d4;       /* Ciano neon controlado com toque moderno */
-            --accent-hover: #22d3ee;       /* Ciano mais vivo ao passar o rato */
-            --accent-glow: rgba(6, 182, 212, 0.28); /* Brilho suave tipo neon */
-            --header-bg: #090d16;          /* Topo escuro de alto contraste */
-            --bg-color: #f1f5f9;           /* Fundo claro e equilibrado */
-            --card-bg: #ffffff;            /* Cartões brancos */
-            --text-color: #334155;         /* Texto principal legível */
+            --bg-color: #090c10;           /* Fundo principal escuro profundo */
+            --card-bg: #11161d;            /* Fundo dos cartões/secções em grafite escuro */
+            --subcard-bg: #171e27;         /* Cartões internos ligeiramente mais claros */
+            --header-bg: rgba(9, 12, 16, 0.92); /* Topo escuro translúcido */
+            --primary-color: #ffffff;      /* Títulos em branco puro */
+            --text-color: #cbd5e1;         /* Texto principal cinza-claro confortável */
+            --muted-text: #94a3b8;         /* Texto secundário */
+            --accent-color: #f8fafc;       /* Branco neon para bordas e destaques */
+            --accent-silver: #94a3b8;      /* Cinza-prata metálico */
+            --accent-glow: rgba(255, 255, 255, 0.22); /* Brilho neon branco suave */
+            --accent-glow-strong: rgba(255, 255, 255, 0.45); /* Brilho mais intenso no hover */
         }
 
         body {
@@ -30,11 +33,12 @@
             line-height: 1.6;
         }
 
-        /* MENU DE NAVEGAÇÃO SUPERIOR (Categorias Principais) */
+        /* MENU DE NAVEGAÇÃO SUPERIOR */
         header {
             background-color: var(--header-bg);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-            border-bottom: 1px solid rgba(34, 211, 238, 0.35);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             position: fixed;
             top: 0;
             width: 100%;
@@ -55,7 +59,7 @@
             font-size: 1.2rem;
             color: #ffffff;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 10px rgba(34, 211, 238, 0.45);
+            text-shadow: 0 0 12px var(--accent-glow-strong);
         }
 
         nav ul {
@@ -68,17 +72,17 @@
 
         nav ul li a {
             text-decoration: none;
-            color: #94a3b8;
+            color: var(--muted-text);
             font-weight: 600;
             transition: color 0.3s, text-shadow 0.3s;
         }
 
         nav ul li a:hover {
-            color: var(--accent-hover);
-            text-shadow: 0 0 8px var(--accent-glow);
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--accent-glow-strong);
         }
 
-        /* SUBMENU FLUTUANTE LATERAL (Lado Esquerdo para Competências e Detalhes) */
+        /* SUBMENU FLUTUANTE LATERAL */
         .floating-sidebar {
             position: fixed;
             left: 25px;
@@ -87,8 +91,9 @@
             background: var(--card-bg);
             padding: 15px 18px;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 12px rgba(6, 182, 212, 0.12);
-            border-left: 4px solid var(--accent-color);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 3px solid var(--accent-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), -2px 0 12px var(--accent-glow);
             z-index: 900;
             width: 155px;
         }
@@ -98,10 +103,10 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            color: #94a3b8;
+            color: var(--accent-silver);
             font-weight: 700;
             margin-bottom: 10px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             padding-bottom: 5px;
         }
 
@@ -116,7 +121,7 @@
 
         .floating-sidebar ul li a {
             text-decoration: none;
-            color: #64748b;
+            color: var(--muted-text);
             font-size: 0.88rem;
             font-weight: 600;
             display: block;
@@ -124,12 +129,11 @@
         }
 
         .floating-sidebar ul li a:hover {
-            color: #0891b2;
-            text-shadow: 0 0 8px var(--accent-glow);
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--accent-glow-strong);
             transform: translateX(4px);
         }
 
-        /* Esconder o menu flutuante em ecrãs menores para não sobrepor ao conteúdo */
         @media (max-width: 1320px) {
             .floating-sidebar {
                 display: none;
@@ -148,8 +152,9 @@
             padding: 35px;
             margin-bottom: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--accent-color);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-top: 3px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 -2px 14px var(--accent-glow);
             scroll-margin-top: 90px;
         }
 
@@ -167,33 +172,34 @@
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 0 16px var(--accent-glow), 0 4px 10px rgba(0, 0, 0, 0.12);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 18px var(--accent-glow-strong), 0 4px 15px rgba(0, 0, 0, 0.6);
             flex-shrink: 0;
         }
 
         .profile-title h1 {
             margin: 0 0 5px 0;
             font-size: 2rem;
-            color: var(--primary-color);
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
         }
 
         .subtitle {
             font-size: 1.05rem;
-            color: #64748b;
+            color: #e2e8f0;
             font-weight: 500;
         }
 
         .about-text {
             font-size: 0.95rem;
             text-align: justify;
-            color: #334155;
+            color: var(--text-color);
             line-height: 1.65;
         }
 
         h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #e2e8f0;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             padding-bottom: 8px;
             margin-top: 0;
             position: relative;
@@ -204,10 +210,10 @@
             display: block;
             width: 64px;
             height: 2px;
-            background: var(--accent-hover);
-            box-shadow: 0 0 8px var(--accent-color);
+            background: #ffffff;
+            box-shadow: 0 0 10px #ffffff, 0 0 18px var(--accent-glow-strong);
             margin-top: 8px;
-            margin-bottom: -10px;
+            margin-bottom: -9px;
         }
 
         /* LISTAS DE COMPETÊNCIAS / SAÍDAS PROFISSIONAIS */
@@ -219,95 +225,123 @@
         }
 
         .skill-card {
-            background: #f8fafc;
+            background: var(--subcard-bg);
             padding: 18px;
-            border-left: 4px solid var(--accent-color);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-left: 3px solid var(--accent-silver);
             border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            border-left-color: var(--accent-hover);
-            box-shadow: 0 8px 22px var(--accent-glow);
-            background-color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.25);
+            border-left-color: #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 14px var(--accent-glow);
+            background-color: #1d2531;
         }
 
         .skill-card h3 {
             margin: 0 0 6px 0;
             font-size: 1rem;
-            color: #0f172a;
+            color: #ffffff;
         }
 
         .skill-card p {
             margin: 0;
             font-size: 0.9rem;
-            color: #64748b;
+            color: var(--muted-text);
+        }
+
+        .skill-card strong {
+            color: #e2e8f0;
         }
 
         /* EXPERIÊNCIA PROFISSIONAL */
         .exp-card {
-            background: #f8fafc;
+            background: var(--subcard-bg);
             padding: 20px;
             margin-bottom: 18px;
-            border-left: 4px solid var(--accent-color);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-left: 3px solid var(--accent-silver);
             border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
         }
 
         .exp-card:hover {
             transform: translateY(-3px);
-            border-left-color: var(--accent-hover);
-            box-shadow: 0 6px 18px var(--accent-glow);
+            border-color: rgba(255, 255, 255, 0.25);
+            border-left-color: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 14px var(--accent-glow);
+            background-color: #1d2531;
         }
 
         .exp-card h3 {
             margin: 0 0 5px 0;
-            color: var(--primary-color);
+            color: #ffffff;
             font-size: 1.1rem;
         }
 
         .exp-company {
             margin: 0 0 10px 0;
-            color: #64748b;
+            color: var(--muted-text);
             font-size: 0.95rem;
+        }
+
+        .exp-company strong {
+            color: #e2e8f0;
         }
 
         .exp-desc {
             margin: 0 0 10px 0;
             font-size: 0.95rem;
-            color: #334155;
+            color: var(--text-color);
+        }
+
+        .exp-desc strong {
+            color: #ffffff;
         }
 
         .exp-list {
             margin: 0;
             padding-left: 20px;
             font-size: 0.92rem;
-            color: #64748b;
+            color: var(--muted-text);
         }
 
         .exp-list li {
             margin-bottom: 5px;
         }
 
+        .exp-list strong {
+            color: #e2e8f0;
+        }
+
         /* LINKS E RODAPÉ */
         a {
-            color: #0891b2;
+            color: #ffffff;
             font-weight: 600;
-            transition: color 0.2s ease, text-shadow 0.2s ease;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+            transition: color 0.2s ease, text-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         a:hover {
-            color: var(--accent-color);
-            text-shadow: 0 0 8px var(--accent-glow);
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+            text-shadow: 0 0 10px var(--accent-glow-strong);
+        }
+
+        nav a, .floating-sidebar a, .back-to-top {
+            border-bottom: none;
         }
 
         footer {
             text-align: center;
             padding: 25px;
-            color: #64748b;
+            color: var(--muted-text);
             font-size: 0.9rem;
         }
 
@@ -368,15 +402,15 @@
             }
         }
 
-        /* BOTÃO FLUTUANTE VOLTAR AO TOPO (Semitransparente e controlado por scroll) */
+        /* BOTÃO FLUTUANTE VOLTAR AO TOPO */
         .back-to-top {
             position: fixed;
             bottom: 22px;
             right: 22px;
-            background-color: rgba(9, 13, 22, 0.65);
-            backdrop-filter: blur(4px);
-            color: var(--accent-hover);
-            border: 1px solid rgba(34, 211, 238, 0.45);
+            background-color: rgba(17, 22, 29, 0.75);
+            backdrop-filter: blur(6px);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.45);
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -385,7 +419,7 @@
             justify-content: center;
             text-decoration: none;
             font-size: 1.2rem;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 0 10px var(--accent-glow);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 12px var(--accent-glow);
             z-index: 950;
 
             opacity: 0;
@@ -401,10 +435,10 @@
         }
 
         .back-to-top:hover {
-            background-color: rgba(9, 13, 22, 0.92);
+            background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-3px);
             color: #ffffff;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25), 0 0 14px var(--accent-color);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 16px var(--accent-glow-strong);
         }
 
         /* ESCONDER "SOBRE MIM" NO MENU EM TELEMÓVEIS */
@@ -455,8 +489,8 @@
                     <div class="subtitle"><strong>Finalista da Licenciatura em Engenharia Informática
                             Aplicada</strong><br>Escola Superior de Tecnologia e Gestão de Águeda – Universidade de
                         Aveiro</div>
-                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: #64748b;">
-                        <strong>Localidade:</strong> Albergaria-a-Velha, Aveiro &nbsp;|&nbsp; <strong>Data de
+                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: #94a3b8;">
+                        <strong style="color: #e2e8f0;">Localidade:</strong> Albergaria-a-Velha, Aveiro &nbsp;|&nbsp; <strong style="color: #e2e8f0;">Data de
                             Nascimento:</strong> 14/03/2003
                     </p>
                 </div>
@@ -543,30 +577,30 @@
             <h2>Formação Académica</h2>
 
             <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Licenciatura em
+                <h3 style="margin: 0 0 5px 0; color: #ffffff; font-size: 1.1rem;">Licenciatura em
                     Engenharia Informática Aplicada (Nível 6)</h3>
-                <p style="margin: 0; color: #64748b;">
-                    <strong>ESTGA – Escola Superior de Tecnologia e Gestão de Águeda, Universidade de
+                <p style="margin: 0; color: #94a3b8;">
+                    <strong style="color: #e2e8f0;">ESTGA – Escola Superior de Tecnologia e Gestão de Águeda, Universidade de
                         Aveiro</strong><br>
                     <em>Setembro 2024 – Atual (Finalista / Estágio Curricular)</em>
                 </p>
             </div>
 
             <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">CTESP em Informática e
+                <h3 style="margin: 0 0 5px 0; color: #ffffff; font-size: 1.1rem;">CTESP em Informática e
                     Comunicação Organizacional (Nível 5)</h3>
-                <p style="margin: 0; color: #64748b;">
-                    <strong>Universidade de Aveiro</strong><br>
+                <p style="margin: 0; color: #94a3b8;">
+                    <strong style="color: #e2e8f0;">Universidade de Aveiro</strong><br>
                     <em>Setembro 2022 – Julho 2024</em><br>
                     Foco em Tecnologias da Informação e Comunicação (TIC) aplicadas ao contexto organizacional.
                 </p>
             </div>
 
             <div>
-                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Curso Técnico de
+                <h3 style="margin: 0 0 5px 0; color: #ffffff; font-size: 1.1rem;">Curso Técnico de
                     Informática e Sistemas (Nível 4)</h3>
-                <p style="margin: 0; color: #64748b;">
-                    <strong>Escola Secundária Soares Basto</strong><br>
+                <p style="margin: 0; color: #94a3b8;">
+                    <strong style="color: #e2e8f0;">Escola Secundária Soares Basto</strong><br>
                     <em>Setembro 2018 – Julho 2021</em>
                 </p>
             </div>
@@ -693,15 +727,13 @@
     <!-- SCRIPT PARA MOSTRAR/ESCONDER A SETA CONSOANTE A SECÇÃO -->
     <script>
         const backToTopBtn = document.querySelector('.back-to-top');
-        const targetSection = document.getElementById('competencias'); // Secção "Perfil Profissional & Áreas de Foco"
+        const targetSection = document.getElementById('competencias');
 
         window.addEventListener('scroll', () => {
             if (!targetSection) return;
 
-            // Calcula a posição da secção "Perfil Profissional" no ecrã
             const sectionTop = targetSection.getBoundingClientRect().top;
 
-            // Mostra a seta apenas quando o utilizador chega ou desce abaixo dessa secção
             if (sectionTop <= 150) {
                 backToTopBtn.classList.add('show');
             } else {
