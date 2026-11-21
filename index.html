@@ -349,12 +349,15 @@
             }
         }
 
-        /* BOTÃO FLUTUANTE VOLTAR AO TOPO */
+        /* BOTÃO FLUTUANTE VOLTAR AO TOPO (Semitransparente e controlado por scroll) */
         .back-to-top {
             position: fixed;
             bottom: 22px;
             right: 22px;
-            background-color: var(--header-bg);
+            background-color: rgba(15, 23, 42, 0.55);
+            /* Azul-marinho semitransparente */
+            backdrop-filter: blur(4px);
+            /* Efeito de desfoque suave atrás */
             color: #ffffff;
             width: 44px;
             height: 44px;
@@ -364,13 +367,25 @@
             justify-content: center;
             text-decoration: none;
             font-size: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             z-index: 950;
-            transition: background-color 0.3s, transform 0.2s;
+
+            /* Começa escondido e invisível */
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Classe ativada via JavaScript quando o utilizador desce a página */
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
 
         .back-to-top:hover {
-            background-color: var(--primary-color);
+            background-color: rgba(15, 23, 42, 0.9);
             transform: translateY(-3px);
             color: #ffffff;
         }
@@ -658,6 +673,25 @@
     </footer>
     <!-- BOTÃO VOLTAR AO TOPO -->
     <a href="#" class="back-to-top" title="Voltar ao topo">&#8593;</a>
+    <!-- SCRIPT PARA MOSTRAR/ESCONDER A SETA CONSOANTE A SECÇÃO -->
+    <script>
+        const backToTopBtn = document.querySelector('.back-to-top');
+        const targetSection = document.getElementById('competencias'); // Secção "Perfil Profissional & Áreas de Foco"
+
+        window.addEventListener('scroll', () => {
+            if (!targetSection) return;
+
+            // Calcula a posição da secção "Perfil Profissional" no ecrã
+            const sectionTop = targetSection.getBoundingClientRect().top;
+
+            // Mostra a seta apenas quando o utilizador chega ou desce abaixo dessa secção
+            if (sectionTop <= 150) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 
 </html>
