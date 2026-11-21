@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,18 @@
 
         :root {
             /* PALETA SÓBRIA: Cinzento-Grafite Profissional e Elegante */
-            --primary-color: #334155;      /* Grafite escuro e sóbrio para títulos e destaques */
-            --primary-light: #e2e8f0;      /* Cinzento muito suave para detalhes */
-            --header-bg: #0f172a;          /* Azul-marinho escuro muito elegante para o cabeçalho */
-            --bg-color: #f1f5f9;           /* Fundo da página cinzento claro e limpo */
-            --card-bg: #ffffff;            /* Cartões em branco puro */
-            --text-color: #334155;         /* Texto principal legível */
+            --primary-color: #334155;
+            /* Grafite escuro e sóbrio para títulos e destaques */
+            --primary-light: #e2e8f0;
+            /* Cinzento muito suave para detalhes */
+            --header-bg: #0f172a;
+            /* Azul-marinho escuro muito elegante para o cabeçalho */
+            --bg-color: #f1f5f9;
+            /* Fundo da página cinzento claro e limpo */
+            --card-bg: #ffffff;
+            /* Cartões em branco puro */
+            --text-color: #334155;
+            /* Texto principal legível */
         }
 
         body {
@@ -31,7 +38,7 @@
         /* MENU DE NAVEGAÇÃO SUPERIOR (Categorias Principais) */
         header {
             background-color: var(--header-bg);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             position: fixed;
             top: 0;
             width: 100%;
@@ -70,7 +77,7 @@
         }
 
         nav ul li a:hover {
-            color: #ffffff; 
+            color: #ffffff;
         }
 
         /* SUBMENU FLUTUANTE LATERAL (Lado Esquerdo para Competências e Detalhes) */
@@ -82,7 +89,7 @@
             background: var(--card-bg);
             padding: 15px 18px;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             border-left: 4px solid var(--primary-color);
             z-index: 900;
             width: 155px;
@@ -142,7 +149,7 @@
             padding: 35px;
             margin-bottom: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             border-top: 4px solid var(--primary-color);
             scroll-margin-top: 90px;
         }
@@ -162,7 +169,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--primary-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
         }
 
@@ -205,7 +212,7 @@
             padding: 18px;
             border-left: 4px solid var(--primary-color);
             border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -234,7 +241,7 @@
             margin-bottom: 18px;
             border-left: 4px solid var(--primary-color);
             border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -341,16 +348,50 @@
                 text-align: left;
             }
         }
+
+        /* BOTÃO FLUTUANTE VOLTAR AO TOPO */
+        .back-to-top {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background-color: var(--header-bg);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            z-index: 950;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        /* ESCONDER "SOBRE MIM" NO MENU EM TELEMÓVEIS */
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- MENU SUPERIOR PRINCIPAL (Apenas as categorias principais) -->
     <header>
         <nav>
             <div class="logo">Pedro Almeida</div>
-           <ul>
-                <li><a href="#sobre">Sobre Mim</a></li>
+            <ul>
+                <li class="hide-mobile"><a href="#sobre">Sobre Mim</a></li>
                 <li><a href="#formacao">Formação</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#experiencia">Experiência</a></li>
@@ -376,21 +417,29 @@
         <section id="sobre">
             <div class="profile-header">
                 <img src="foto.jpeg" alt="Foto de Pedro Almeida" class="profile-photo">
-                
-            <div class="profile-title">
+
+                <div class="profile-title">
                     <h1>Pedro Henrique Tavares Almeida</h1>
-                    <div class="subtitle"><strong>Finalista da Licenciatura em Engenharia Informática Aplicada</strong><br>Escola Superior de Tecnologia e Gestão de Águeda – Universidade de Aveiro</div>
+                    <div class="subtitle"><strong>Finalista da Licenciatura em Engenharia Informática
+                            Aplicada</strong><br>Escola Superior de Tecnologia e Gestão de Águeda – Universidade de
+                        Aveiro</div>
                     <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: #64748b;">
-                        <strong>Localidade:</strong> Albergaria-a-Velha, Aveiro &nbsp;|&nbsp; <strong>Data de Nascimento:</strong> 14/03/2003
+                        <strong>Localidade:</strong> Albergaria-a-Velha, Aveiro &nbsp;|&nbsp; <strong>Data de
+                            Nascimento:</strong> 14/03/2003
                     </p>
                 </div>
 
             </div>
             <p class="about-text">
-                Sou uma pessoa disciplinada, focada e exigente comigo mesmo. Gosto de abraçar objetivos desafiantes e de os concretizar com rigor, procurando sempre superar os meus próprios limites a cada novo projeto e aprender continuamente com os desafios que encontro.
+                Sou uma pessoa disciplinada, focada e exigente comigo mesmo. Gosto de abraçar objetivos desafiantes e de
+                os concretizar com rigor, procurando sempre superar os meus próprios limites a cada novo projeto e
+                aprender continuamente com os desafios que encontro.
             </p>
             <p class="about-text">
-                Fora da tecnologia, a música ocupa um lugar central na minha vida. Toco vários instrumentos, integrando ativamente vários projetos como grupos corais e bandas de música. Esta vertente artística desenvolve em mim um forte espírito de equipa, sentido de responsabilidade e polivalência, competências que trago agora para o meu futuro profissional.
+                Fora da tecnologia, a música ocupa um lugar central na minha vida. Toco vários instrumentos, integrando
+                ativamente vários projetos como grupos corais e bandas de música. Esta vertente artística desenvolve em
+                mim um forte espírito de equipa, sentido de responsabilidade e polivalência, competências que trago
+                agora para o meu futuro profissional.
             </p>
         </section>
 
@@ -398,12 +447,14 @@
         <section id="competencias">
             <h2>Perfil Profissional & Áreas de Foco</h2>
             <p class="about-text" style="margin-bottom: 20px;">
-                Com base na formação multidisciplinar da ESTGA, o meu foco profissional direciona-se para a integração de sistemas, consultoria, garantia de qualidade e desenvolvimento de aplicações:
+                Com base na formação multidisciplinar da ESTGA, o meu foco profissional direciona-se para a integração
+                de sistemas, consultoria, garantia de qualidade e desenvolvimento de aplicações:
             </p>
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3>Consultoria & Análise de Sistemas</h3>
-                    <p>Análise e desenvolvimento de sistemas de informação, atuando em suporte e integração de soluções.</p>
+                    <p>Análise e desenvolvimento de sistemas de informação, atuando em suporte e integração de soluções.
+                    </p>
                 </div>
                 <div class="skill-card">
                     <h3>Redes & Infraestruturas</h3>
@@ -428,25 +479,29 @@
             </div>
         </section>
 
-       <!-- SECÇÃO: LINGUAGENS E FERRAMENTAS -->
+        <!-- SECÇÃO: LINGUAGENS E FERRAMENTAS -->
         <section id="tecnologias">
             <h2>Linguagens, Ferramentas & Tecnologias</h2>
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3>Linguagens de Programação</h3>
-                    <p><strong>Java, PHP, C, C++, C#</strong> — Fundamentos sólidos de programação e lógica aplicados ao desenvolvimento acadêmico.</p>
+                    <p><strong>Java, PHP, C, C++, C#</strong> — Fundamentos sólidos de programação e lógica aplicados ao
+                        desenvolvimento acadêmico.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Frontend & Web</h3>
-                    <p><strong>HTML, CSS, JavaScript, React</strong> — Desenvolvimento de interfaces de utilizador e páginas web interativas.</p>
+                    <p><strong>HTML, CSS, JavaScript, React</strong> — Desenvolvimento de interfaces de utilizador e
+                        páginas web interativas.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Bases de Dados & Espaciais</h3>
-                    <p><strong>SQL, MySQL, PostgreSQL, Bases de Dados Espaciais</strong> — Modelação de dados relacionais, estruturação de consultas e tratamento de dados geográficos.</p>
+                    <p><strong>SQL, MySQL, PostgreSQL, Bases de Dados Espaciais</strong> — Modelação de dados
+                        relacionais, estruturação de consultas e tratamento de dados geográficos.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Ferramentas & Ambientes</h3>
-                    <p><strong>Git, WordPress, Ferramentas de QA/Testes</strong> — Controlo de versões, experiência em projetos web e validação funcional.</p>
+                    <p><strong>Git, WordPress, Ferramentas de QA/Testes</strong> — Controlo de versões, experiência em
+                        projetos web e validação funcional.</p>
                 </div>
             </div>
         </section>
@@ -454,17 +509,20 @@
         <!-- SECÇÃO: FORMAÇÃO ACADÉMICA -->
         <section id="formacao">
             <h2>Formação Académica</h2>
-            
+
             <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Licenciatura em Engenharia Informática Aplicada (Nível 6)</h3>
+                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Licenciatura em
+                    Engenharia Informática Aplicada (Nível 6)</h3>
                 <p style="margin: 0; color: #64748b;">
-                    <strong>ESTGA – Escola Superior de Tecnologia e Gestão de Águeda, Universidade de Aveiro</strong><br>
+                    <strong>ESTGA – Escola Superior de Tecnologia e Gestão de Águeda, Universidade de
+                        Aveiro</strong><br>
                     <em>Setembro 2024 – Atual (Finalista / Estágio Curricular)</em>
                 </p>
             </div>
 
             <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">CTESP em Informática e Comunicação Organizacional (Nível 5)</h3>
+                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">CTESP em Informática e
+                    Comunicação Organizacional (Nível 5)</h3>
                 <p style="margin: 0; color: #64748b;">
                     <strong>Universidade de Aveiro</strong><br>
                     <em>Setembro 2022 – Julho 2024</em><br>
@@ -473,7 +531,8 @@
             </div>
 
             <div>
-                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Curso Técnico de Informática e Sistemas (Nível 4)</h3>
+                <h3 style="margin: 0 0 5px 0; color: var(--primary-color); font-size: 1.1rem;">Curso Técnico de
+                    Informática e Sistemas (Nível 4)</h3>
                 <p style="margin: 0; color: #64748b;">
                     <strong>Escola Secundária Soares Basto</strong><br>
                     <em>Setembro 2018 – Julho 2021</em>
@@ -487,20 +546,26 @@
 
             <div class="exp-card">
                 <h3>Web Designer / Colaborador</h3>
-                <p class="exp-company"><strong>Grupo Durit</strong> — Albergaria-a-Velha | <em>Fev 2024 – Set 2024</em></p>
+                <p class="exp-company"><strong>Grupo Durit</strong> — Albergaria-a-Velha | <em>Fev 2024 – Set 2024</em>
+                </p>
                 <p class="exp-desc">
-                    Estágio profissional de 5 meses seguido de colaboração <em>freelance</em> no Departamento de Comunicação.
+                    Estágio profissional de 5 meses seguido de colaboração <em>freelance</em> no Departamento de
+                    Comunicação.
                 </p>
                 <ul class="exp-list">
-                    <li><strong>Reestruturação Web:</strong> Redesign e atualização de websites corporativos em WordPress.</li>
-                    <li><strong>UI/UX e Prototipagem:</strong> Desenvolvimento de propostas visuais alinhadas com as necessidades de negócio.</li>
-                    <li><strong>Gestão de Projetos:</strong> Acompanhamento do ciclo de vida dos sites, do levantamento à publicação.</li>
+                    <li><strong>Reestruturação Web:</strong> Redesign e atualização de websites corporativos em
+                        WordPress.</li>
+                    <li><strong>UI/UX e Prototipagem:</strong> Desenvolvimento de propostas visuais alinhadas com as
+                        necessidades de negócio.</li>
+                    <li><strong>Gestão de Projetos:</strong> Acompanhamento do ciclo de vida dos sites, do levantamento
+                        à publicação.</li>
                 </ul>
             </div>
 
             <div class="exp-card">
                 <h3>Estagiário / Programador de Aplicações Web</h3>
-                <p class="exp-company"><strong>Filipengine - Sistemas de Informação</strong> — Branca, Albergaria-a-Velha | <em>Fev 2021 – Jun 2021</em></p>
+                <p class="exp-company"><strong>Filipengine - Sistemas de Informação</strong> — Branca,
+                    Albergaria-a-Velha | <em>Fev 2021 – Jun 2021</em></p>
                 <p class="exp-desc">
                     Estágio profissional integrado no Curso Técnico de Informática e Sistemas (Ensino Secundário).
                 </p>
@@ -509,10 +574,12 @@
             <div class="exp-card" style="opacity: 0.85;">
                 <h3>Outras Experiências Profissionais</h3>
                 <p class="exp-desc" style="margin-bottom: 8px;">
-                    <strong>Pneus de Ocasião</strong> (Jul 2025 – Jan 2026): Assistente de oficina, atendimento ao cliente e gestão de armazém/stock.
+                    <strong>Pneus de Ocasião</strong> (Jul 2025 – Jan 2026): Assistente de oficina, atendimento ao
+                    cliente e gestão de armazém/stock.
                 </p>
                 <p class="exp-desc" style="margin: 0;">
-                    <strong>Jolyforma</strong> (Jan 2022 – Mar 2022): Assistente de produção, atendimento e apoio técnico.
+                    <strong>Jolyforma</strong> (Jan 2022 – Mar 2022): Assistente de produção, atendimento e apoio
+                    técnico.
                 </p>
             </div>
         </section>
@@ -523,15 +590,18 @@
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3>Português — Nível C2</h3>
-                    <p><strong>Língua Materna</strong> — Domínio pleno na compreensão, expressão oral e escrita (PT-PT).</p>
+                    <p><strong>Língua Materna</strong> — Domínio pleno na compreensão, expressão oral e escrita (PT-PT).
+                    </p>
                 </div>
                 <div class="skill-card">
                     <h3>Inglês — Nível A2 / B1</h3>
-                    <p><strong>Compreensão Leitura: B1 | Oral: A2</strong> — Boa capacidade de leitura de documentação técnica. <em>(Em desenvolvimento ativo através de formação contínua)</em>.</p>
+                    <p><strong>Compreensão Leitura: B1 | Oral: A2</strong> — Boa capacidade de leitura de documentação
+                        técnica. <em>(Em desenvolvimento ativo através de formação contínua)</em>.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Francês — Nível A2 / B1</h3>
-                    <p><strong>Compreensão Leitura: B1 | Oral: A2</strong> — Facilidade na leitura e interpretação de textos escritos.</p>
+                    <p><strong>Compreensão Leitura: B1 | Oral: A2</strong> — Facilidade na leitura e interpretação de
+                        textos escritos.</p>
                 </div>
             </div>
         </section>
@@ -540,23 +610,30 @@
         <section id="projetos">
             <h2>Projetos Académicos Destacados</h2>
             <p class="about-text" style="margin-bottom: 20px;">
-                Seleção de projetos práticos desenvolvidos no âmbito da Licenciatura em Engenharia Informática Aplicada (ESTGA) e do CTESP:
+                Seleção de projetos práticos desenvolvidos no âmbito da Licenciatura em Engenharia Informática Aplicada
+                (ESTGA) e do CTESP:
             </p>
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3>SaúdeDigital — Portal de Partilha Clínica</h3>
-                    <p style="margin-bottom: 12px;">Plataforma web Full-Stack para gestão centralizada, visualização de relatórios PDF e partilha segura de exames médicos.</p>
-                    <a href="https://github.com/pedrohtalmeida/SaudeDigital" target="_blank">Ver Repositório no GitHub &rarr;</a>
+                    <p style="margin-bottom: 12px;">Plataforma web Full-Stack para gestão centralizada, visualização de
+                        relatórios PDF e partilha segura de exames médicos.</p>
+                    <a href="https://github.com/pedrohtalmeida/SaudeDigital" target="_blank">Ver Repositório no GitHub
+                        &rarr;</a>
                 </div>
                 <div class="skill-card">
                     <h3>TABD — Bases de Dados Avançadas & Espaciais</h3>
-                    <p style="margin-bottom: 12px;">Modelação relacional, estruturação de consultas complexas e tratamento de dados geográficos em PostgreSQL / PostGIS.</p>
-                    <a href="https://github.com/pedrohtalmeida/simuladorFogo.git" target="_blank">Ver Repositório no GitHub &rarr;</a>
+                    <p style="margin-bottom: 12px;">Modelação relacional, estruturação de consultas complexas e
+                        tratamento de dados geográficos em PostgreSQL / PostGIS.</p>
+                    <a href="https://github.com/pedrohtalmeida/simuladorFogo.git" target="_blank">Ver Repositório no
+                        GitHub &rarr;</a>
                 </div>
                 <div class="skill-card">
                     <h3>PTDA — Gestão de Stock</h3>
-                    <p style="margin-bottom: 12px;">Sistema de informação desenvolvido em equipa para controlo de inventário, validação funcional e gestão operacional.</p>
-                    <a href="https://github.com/pedrohtalmeida/GestorStock.git" target="_blank">Ver Repositório no GitHub &rarr;</a>
+                    <p style="margin-bottom: 12px;">Sistema de informação desenvolvido em equipa para controlo de
+                        inventário, validação funcional e gestão operacional.</p>
+                    <a href="https://github.com/pedrohtalmeida/GestorStock.git" target="_blank">Ver Repositório no
+                        GitHub &rarr;</a>
                 </div>
             </div>
         </section>
@@ -564,10 +641,12 @@
         <!-- SECÇÃO: CONTACTO -->
         <section id="contacto">
             <h2>Contactos</h2>
-            <p>Estou disponível para oportunidades de <strong>estágio curricular</strong>. Pode entrar em contacto comigo através dos seguintes meios:</p>
+            <p>Estou disponível para oportunidades de <strong>estágio curricular</strong>. Pode entrar em contacto
+                comigo através dos seguintes meios:</p>
             <ul>
                 <li>Email: <a href="mailto:phtalmeida18@ua.pt">phtalmeida18@ua.pt</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/pht-almeida" target="_blank">Perfil no LinkedIn</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/pht-almeida" target="_blank">Perfil no LinkedIn</a>
+                </li>
                 <li>GitHub: <a href="https://github.com" target="_blank">Perfil no GitHub</a></li>
             </ul>
         </section>
@@ -577,6 +656,8 @@
     <footer>
         <p>&copy; 2026 Pedro Almeida — Portfólio Académico e Profissional</p>
     </footer>
-
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <a href="#" class="back-to-top" title="Voltar ao topo">&#8593;</a>
 </body>
+
 </html>
