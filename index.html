@@ -243,6 +243,12 @@
         }
 
         /* SECÇÃO LADO A LADO: PERFIL & ÁREAS vs LINGUAGENS & FERRAMENTAS */
+        #competencias,
+        #competencias * {
+            pointer-events: none;
+            user-select: none;
+        }
+
         .categories-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -303,7 +309,7 @@
             gap: 8px;
         }
 
-       .tag-pill {
+        .tag-pill {
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.84rem;
@@ -312,17 +318,13 @@
             cursor: default;
         }
 
-        /* CORES POR CATEGORIA — ÁREAS DE FOCO (ADAPTADAS PARA FUNDO CLARO) */
+        /* CORES POR CATEGORIA — ÁREAS DE FOCO (SEM EFEITOS HOVER) */
         .theme-erp .cat-label { color: #1d4ed8; }
         .theme-erp .cat-dot { background: #2563eb; box-shadow: 0 0 6px rgba(37, 99, 235, 0.5); }
         .theme-erp .tag-pill {
             background: #eff6ff;
             color: #1e40af;
             border-color: #bfdbfe;
-        }
-        .theme-erp .tag-pill:hover {
-            background: #dbeafe;
-            box-shadow: 0 3px 10px rgba(37, 99, 235, 0.18);
         }
 
         .theme-qa .cat-label { color: #047857; }
@@ -332,10 +334,6 @@
             color: #065f46;
             border-color: #a7f3d0;
         }
-        .theme-qa .tag-pill:hover {
-            background: #d1fae5;
-            box-shadow: 0 3px 10px rgba(16, 185, 129, 0.18);
-        }
 
         .theme-infra .cat-label { color: #b45309; }
         .theme-infra .cat-dot { background: #f59e0b; box-shadow: 0 0 6px rgba(245, 158, 11, 0.5); }
@@ -344,22 +342,14 @@
             color: #92400e;
             border-color: #fde68a;
         }
-        .theme-infra .tag-pill:hover {
-            background: #fef3c7;
-            box-shadow: 0 3px 10px rgba(245, 158, 11, 0.18);
-        }
 
-        /* CORES POR CATEGORIA — LINGUAGENS E FERRAMENTAS */
+        /* CORES POR CATEGORIA — LINGUAGENS E FERRAMENTAS (SEM EFEITOS HOVER) */
         .theme-lang .cat-label { color: #6d28d9; }
         .theme-lang .cat-dot { background: #7c3aed; box-shadow: 0 0 6px rgba(124, 58, 237, 0.5); }
         .theme-lang .tag-pill {
             background: #f5f3ff;
             color: #5b21b6;
             border-color: #ddd6fe;
-        }
-        .theme-lang .tag-pill:hover {
-            background: #ede9fe;
-            box-shadow: 0 3px 10px rgba(124, 58, 237, 0.18);
         }
 
         .theme-web .cat-label { color: #0e7490; }
@@ -369,10 +359,6 @@
             color: #155e75;
             border-color: #a5f3fc;
         }
-        .theme-web .tag-pill:hover {
-            background: #cffafe;
-            box-shadow: 0 3px 10px rgba(6, 182, 212, 0.18);
-        }
 
         .theme-db .cat-label { color: #be123c; }
         .theme-db .cat-dot { background: #e11d48; box-shadow: 0 0 6px rgba(225, 29, 72, 0.5); }
@@ -380,10 +366,6 @@
             background: #fff1f2;
             color: #9f1239;
             border-color: #fecdd3;
-        }
-        .theme-db .tag-pill:hover {
-            background: #ffe4e6;
-            box-shadow: 0 3px 10px rgba(225, 29, 72, 0.18);
         }
 
         /* LISTAS DE PROJETOS / IDIOMAS */
@@ -785,7 +767,7 @@
                 <p class="exp-company"><strong>Grupo Durit</strong> — Albergaria-a-Velha | <em>Fev 2024 – Set 2024</em>
                 </p>
                 <p class="exp-desc">
-                    Estágio profissional de 5 meses seguido de colaboração <em>freelance</em> no Departamento de
+                    Estágio curricular de 5 meses seguido de colaboração <em>freelance</em> no Departamento de
                     Comunicação.
                 </p>
                 <ul class="exp-list">
@@ -823,7 +805,7 @@
         <section id="projetos">
             <h2>Projetos Académicos Destacados</h2>
             <p class="about-text" style="margin-bottom: 20px;">
-                Projetos desenvolvidos no âmbito da Licenciatura em Engenharia Informática Aplicada (ESTGA) e do CTESP:
+                Projetos desenvolvidos no âmbito da Licenciatura em Engenharia Informática Aplicada (ESTGA):
             </p>
             <div class="skills-grid">
                 <div class="skill-card">
